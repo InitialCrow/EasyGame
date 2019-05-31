@@ -30,7 +30,11 @@ module.exports = {
 	plugins: [
 		new CopyPlugin([
 
-			{ from: __dirname+'/client/index.html', to: __dirname+'/dist' },
+			{
+				from: __dirname+'/client/index.html', to: __dirname+'/dist',
+				from: __dirname+'/client/assets', to: __dirname+'/dist/assets',
+
+			},
 	    ]),
   	]
 }

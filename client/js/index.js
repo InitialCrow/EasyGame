@@ -25,7 +25,19 @@
 				document.body.appendChild(EZG_engine.app.view);
 			}
 			self.mod.EZG_player.log()
+			self.mod.EZG_player.render(false, (assets)=>{
+				let textureArr = []
+				for(i in assets.run.seq){
+					let path = assets.run.path + assets.run.seq[i] + assets.run.ext
+					let texture = EZG_engine.engine.Texture.from(path);
 
+					textureArr.push(texture)
+				}
+
+
+				let animated = new EZG_engine.engine.AnimatedSprite(textureArr);
+
+			})
 
 		},
 		render : ()=>{
