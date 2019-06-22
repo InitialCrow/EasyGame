@@ -5,6 +5,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 module.exports = {
 	mode: 'development',
 	entry: {
+		loadCoreModule : './client/js/core/loadCoreModule.js',
 		loadModule : './client/js/loadModule.js',
 		main:'./client/js/index.js',
 	},
@@ -31,10 +32,13 @@ module.exports = {
 		new CopyPlugin([
 
 			{
-				from: __dirname+'/client/index.html', to: __dirname+'/dist',
-				from: __dirname+'/client/assets', to: __dirname+'/dist/assets',
+				
+				from: __dirname+'/client/index.html', to: __dirname+'/dist/index.html',
 
 			},
+			{
+				from: __dirname+'/client/assets', to: __dirname+'/dist/assets',
+			}
 	    ]),
   	]
 }

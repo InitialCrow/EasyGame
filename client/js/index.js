@@ -9,6 +9,8 @@
 
 
 		},
+
+		c_mod : ctx.EZG_core_module,
 		mod : ctx.EZG_module,
 		type : null,
 		engine : null,
@@ -18,7 +20,7 @@
 		init : ()=>{
 			if(EZG_engine.conf.physicEngine === "pixi"){
 
-				EZG_engine.engine = self.mod.PIXI
+				EZG_engine.engine = self.c_mod.PIXI
 				EZG_engine.app = new EZG_engine.engine.Application({width: EZG_engine.conf.screenWidth, height: EZG_engine.conf.screenHeight});
 				EZG_engine.type="webgl"
 				EZG_engine.engine.utils.sayHello(EZG_engine.type)
@@ -26,25 +28,18 @@
 			}
 			self.mod.EZG_player.log()
 			self.mod.EZG_player.render(false, (assets)=>{
-				let textureArr = []
-				for(i in assets.run.seq){
-					let path = assets.run.path + assets.run.seq[i] + assets.run.ext
-					let texture = EZG_engine.engine.Texture.from(path);
+				let animePack = self.c_mod.EZG_pixi_loadSprite(assets)				
 
-					textureArr.push(texture)
-				}
-
-
-				let animated = new EZG_engine.engine.AnimatedSprite(textureArr);
-
+				self.mod.EZG_player.stickProp({'animePack' : animePack})
+				
 			})
+			self.mod.EZG_player.animePack.run.play()
+			EZG_engine.app.stage.addChild(self.mod.EZG_player.animePack.run)
 
 		},
 		render : ()=>{
 			if(EZG_engine.conf.physicEngine === "pixi"){
-				EZG_engine.engine.ticker.add(()=>{
-
-				})
+				console.log(EZG_engine.app.stage)
 			}
 		}
 	}

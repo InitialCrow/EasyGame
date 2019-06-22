@@ -12,11 +12,34 @@ export default class EZGC_player{
 
 	}
 	/**
+	 * @param  {Object} [props to add extern to the class]
+	 * @return {[Boolan]} [return true if props added or false if not added]
+	 */
+	stickProp(props = {}){
+		let countProps = Object.getOwnPropertyNames(this).length
+		let newProps = Object.getOwnPropertyNames(props)
+		for(let i in newProps){
+
+			this[newProps[i]] = props[newProps[i]]
+		}
+		let newCountProps = Object.getOwnPropertyNames(this).length
+
+		if(countProps < newCountProps){
+
+			return true
+		}
+		else{
+			return false
+		}
+	}
+	/**
 	 * @return {[log]} [return data class in log]
 	 */
 	log(){
-		console.log('name of player -> ',this.name )
-		console.log('hp : ', this.hp)
+		let props = Object.getOwnPropertyNames(this)
+		for(let i in props){
+			console.log(props[i] + ' -> ', this[props[i]])
+		}
 	}
 
 	/**
@@ -29,7 +52,7 @@ export default class EZGC_player{
 			return callback(this.assets)
 		}
 		else{
-
+			return this.assets
 		}
 	}
 }
