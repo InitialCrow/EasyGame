@@ -1,5 +1,6 @@
-export default class EZGC_player{
+export default class EZGC_player extends EZG_core_module.EZGC_core_class{
 	constructor(name, hp, assets) {
+		super()
 		this.name = name || 'EZG_player'
 		this.hp = hp || 20
 		this.assets = assets || {
@@ -30,15 +31,6 @@ export default class EZGC_player{
 		}
 		else{
 			return false
-		}
-	}
-	/**
-	 * @return {[log]} [return data class in log]
-	 */
-	log(){
-		let props = Object.getOwnPropertyNames(this)
-		for(let i in props){
-			console.log(props[i] + ' -> ', this[props[i]])
 		}
 	}
 

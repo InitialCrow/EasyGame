@@ -1,4 +1,4 @@
-export const EZG_pixi_loadSprite = (assets)=>{
+export const EZG_pixi_loadAnimatedSprite = (assets)=>{
 
 	let animePack = {}
 	let props = Object.getOwnPropertyNames(assets)

@@ -28,14 +28,21 @@
 			}
 			self.mod.EZG_player.log()
 			self.mod.EZG_player.render(false, (assets)=>{
-				let animePack = self.c_mod.EZG_pixi_loadSprite(assets)				
+				let animePack = self.c_mod.EZG_pixi_loadAnimatedSprite(assets)				
 
 				self.mod.EZG_player.stickProp({'animePack' : animePack})
 				
 			})
 			self.mod.EZG_player.animePack.run.play()
+
+
 			EZG_engine.app.stage.addChild(self.mod.EZG_player.animePack.run)
 
+			let cord = {w : 50, h:50}
+			let data = self.mod.EZG_world.createGround(cord)
+			let ground = self.c_mod.EZG_pixi_loadTillingSprite(data)
+
+			EZG_engine.app.stage.addChild(ground)
 		},
 		render : ()=>{
 			if(EZG_engine.conf.physicEngine === "pixi"){
