@@ -14,8 +14,12 @@ export default class EZGC_world extends EZG_core_module.EZGC_core_class{
 
 	}
 
-	createGround(data = {w: 100, h:100, assets : null},  callback = false){
+	createGround(data = {w: EZG_core_module.conf.conf.screen.h, h:20, assets : null},  callback = false){
 		data.assets = this.assets
+
+		data.position = {}
+		data.position.x = 0
+		data.position.y = EZG_core_module.conf.conf.screen.h - data.h +5
 		if(callback){
 			callback(data)
 		}

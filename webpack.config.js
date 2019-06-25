@@ -1,6 +1,5 @@
 const webpack = require('webpack') //to access built-in plugins
-const CopyPlugin = require('copy-webpack-plugin');
-
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
 	mode: 'development',
@@ -32,13 +31,15 @@ module.exports = {
 		new CopyPlugin([
 
 			{
-				
+
 				from: __dirname+'/client/index.html', to: __dirname+'/dist/index.html',
 
 			},
 			{
 				from: __dirname+'/client/assets', to: __dirname+'/dist/assets',
-			}
+			},
+
+
 	    ]),
   	]
 }
